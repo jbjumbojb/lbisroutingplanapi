@@ -151,7 +151,33 @@ paths:
           description: unexpected error
           schema:
             $ref: '#/definitions/Error'
-            
+  /pois:
+    get:
+      tags:
+        - POI
+      summary: Get POI
+      parameters:
+        - name: keyword
+          type: string
+          in: query
+          description: keyword for seach POI
+          required: false
+        - name: page
+          type: number
+          in: query
+          description: page
+          required: false
+      responses:
+        200:
+          description: search result poi
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/POI'
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
   /routing/findtheway:
     post:
       tags:
@@ -256,6 +282,26 @@ definitions:
         type: number
       lng:
         type: number
+  POI:
+    required:
+      - poiId
+      - name
+      - latitude
+      - longitude
+    properties:
+      poiId:
+        type: number
+        format: int32
+      name:
+        type: string
+      address:
+        type: string
+      latitude:
+        type: number
+        format: double
+      longitude:
+        type: number
+        format: double
   Error:
     required:
       - code
