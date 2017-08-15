@@ -183,6 +183,7 @@ paths:
       tags:
       - Routing
       summary: find the way
+      description: example request> http://jumbo.blob.core.windows.net/ecartstudio/THPOST/nhmap-routing.txt
       parameters:
         - in: body
           name: body
